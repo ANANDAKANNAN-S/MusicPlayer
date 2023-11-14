@@ -1,0 +1,192 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height:100vh;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins',sans-serif;
+}
+
+.music-player{
+    width: 350px;
+    height: 550px;
+    border-radius: 20px;
+    background: black;
+    box-shadow: gray;
+    padding: 30px;
+    overflow: hidden;
+    color: white;
+}
+
+.music-name,
+.artist-name{
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.music-name{
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.artist-name{
+    font-size: 20px;
+}
+
+.disk{
+    position: relative;
+    display: block;
+    margin:40px auto;
+    width:180px;
+    height:180px;
+    border-radius: 50%;
+    background-image: url('scared.jpg');
+    background-size: cover;
+    box-shadow: 0 0 0 10px white;
+    animation:rotate 20s linear infinite;
+    animation-play-state:paused;
+}
+
+.disk.play{
+    animation-play-state: running;
+}
+
+.disk::before{
+   content:'';
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   background: white;
+}
+
+.song-slider{
+    width: 100%;
+    position: relative;
+}
+
+.seek-bar{
+    -webkit-appearance: none;
+    width: 100%;
+    height:5px;
+    border-radius: 10px;
+    background:  white;
+    overflow: hidden;
+    cursor:pointer; 
+}
+
+.seek-bar::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width:1px;
+    height:20px;
+    background: grey;
+    box-shadow: -400px 0 0 400px grey;
+}
+
+.current-time,
+.song-duration{
+      font-size: 14px;;
+}
+
+.song-duration{
+    position: absolute;
+    right:0;
+}
+
+.controls{
+    width: 60%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:auto;
+    margin-top: 20px;
+}
+
+.play-btn{
+    position:relative;
+    width:60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    border:none;
+}
+
+
+.play-btn span{
+    position: absolute;
+    top:50%;
+    left:25%;
+    transform: translateY(-50%);
+    width: 10px;
+    height:30px;
+    border-radius: 2px;
+    background: black;
+    transition: .5s;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.play-btn span:nth-child(2){
+    left:55%;
+    transform-origin:center;
+}
+
+.play-btn.pause span:nth-child(2){
+    transform: translateY(-50%) scaleY(0);
+}
+
+.play-btn.pause span:nth-child(1){
+    width:35%;
+    left:53%;
+    transform: translate(-50%,-50%);
+    border-radius:0;
+    clip-path: polygon(0 0, 100% 50%, 100% 50%, 0% 100%);
+}
+
+.play-btn.pause{
+    animation: pulse 2s linear infinite;
+}
+
+@keyframes pulse{
+    0%{
+        box-shadow: 0;
+    }
+    50%{
+        box-shadow: 0 0 0 5px grey;
+    }
+    100%{
+        box-shadow: 0 0 0 5px grey;
+    }
+}
+
+.btn{
+    width: 35px;
+    height:35px;
+    background: white;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor:pointer;
+}
+
+@keyframes rotate{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
